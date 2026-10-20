@@ -41,34 +41,36 @@ export const en: Dictionary = {
     heroEyebrow: "HANDMADE RELIEF DIPTYCHS",
     heroTitle: "Faith, tradition, and personal story.",
     heroLead:
-      "Unique personalized gifts — decorative hinged relief diptychs, not ordinary books.",
+      "Unique gifts — open hinged relief panels with a personalized message, made with care for the most special people and moments.",
     heroCta: "Browse the collection",
+    heroPlaceholderNote:
+      "Slot for a real photo of an open relief diptych (not an ordinary book). Phase 1 — marked container.",
     values: [
       {
         title: "Handmade",
-        body: "Each piece is unique and made with care",
+        body: "Each diptych is unique and made with care",
       },
       {
-        title: "Premium detail",
-        body: "Relief, hinges, and insert — finished with care",
+        title: "Personalized message",
+        body: "Name, date, and wish on the right panel",
       },
       {
-        title: "Natural aesthetic",
-        body: "Warm materials and airy design",
+        title: "Quality materials",
+        body: "Lasting relief, hinges, and insert",
       },
       {
-        title: "Personal message",
-        body: "Room for your words on the right panel",
+        title: "For every occasion",
+        body: "Christening, wedding, name day, family, and more",
       },
       {
         title: "Delivery in Bulgaria",
-        body: "Will be added in a later phase",
+        body: "Courier and timelines — in a later phase",
       },
     ],
     categoriesTitle: "Popular categories",
     featuredTitle: "Featured diptychs",
     featuredLead:
-      "Conceptual products for Phase 1 — images are slots for real photographs.",
+      "Conceptual products for Phase 1 — images are slots for real photographs of relief diptychs.",
     storyEyebrow: "ZAVET IS MORE THAN A GIFT",
     storyTitle: "Meaning that lasts for generations.",
     storyBody:

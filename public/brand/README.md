@@ -1,8 +1,15 @@
-# Brand assets
+# Brand assets (approved)
 
-Place owner-approved ЗАВЕТ / ZAVET logo files here:
+Owner-approved ЗАВЕТ / ZAVET logo files. Do not recreate or modify from scratch.
 
-- Horizontal logo (corrected variant)
-- Circular logo (corrected variant)
+| File | Use |
+|------|-----|
+| `horizontal-black.png` | Primary header / horizontal lockup (transparent bg) |
+| `vertical-tagline-black.png` | Stacked with tagline |
+| `stacked-no-tagline-black.png` | Stacked wordmark without tagline |
+| `stacked-dark-bronze-black.png` | Stacked bronze variant |
+| `stacked-cream-on-brown.png` | Cream on espresso plate |
+| `circular-black.png` | Circular / seal |
+| `icon-only-black.png` | Icon mark only |
 
-Do not recreate or modify logos from scratch. Until real files are supplied, the storefront uses typographic brand treatment only.
+Source: Anton-approved files under project refs `docs/refs/logos/`.

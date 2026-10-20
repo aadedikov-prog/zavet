@@ -56,55 +56,69 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-espresso">
-        <div className="absolute inset-0">
-          <PlaceholderFrame
-            label={dict.common.placeholderImage}
-            note={dict.common.placeholderNote}
-            aspect="hero"
-            tone="wood"
-            className="h-full min-h-[420px] opacity-90 md:min-h-[560px]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-espresso/75 via-espresso/45 to-espresso/20" />
-        </div>
-        <div className="relative mx-auto flex max-w-6xl px-4 py-20 md:px-6 md:py-28">
-          <div className="max-w-xl text-ivory">
-            <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-antique-gold">
-              {dict.home.heroEyebrow}
-            </p>
-            <h1 className="mt-4 font-serif text-4xl leading-[1.1] text-ivory md:text-6xl">
-              {dict.home.heroTitle}
-            </h1>
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/85 md:text-base">
-              {dict.home.heroLead}
-            </p>
-            <Link
-              href={localePath(locale, "/products")}
-              className="btn-gold focus-ring mt-8"
-            >
-              {dict.home.heroCta}
-              <IconArrow />
-            </Link>
+      {/* Hero — warm split composition matching cream mockups */}
+      <section className="relative overflow-hidden border-b border-border/60 bg-ivory">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          aria-hidden="true"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 80% 60% at 15% 40%, rgba(232,217,195,0.9), transparent 55%), radial-gradient(ellipse 50% 70% at 90% 20%, rgba(177,138,85,0.12), transparent 50%)",
+          }}
+        />
+        <div className="relative mx-auto grid max-w-6xl items-stretch md:grid-cols-2">
+          <div className="flex flex-col justify-center px-4 py-14 md:px-6 md:py-20 lg:pr-10">
+            <div className="home-reveal max-w-lg">
+              <p className="text-[0.68rem] font-medium uppercase tracking-[0.24em] text-antique-gold">
+                {dict.home.heroEyebrow}
+              </p>
+              <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] text-espresso md:text-5xl lg:text-[3.35rem]">
+                {dict.home.heroTitle}
+              </h1>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted md:text-[0.95rem]">
+                {dict.home.heroLead}
+              </p>
+              <Link
+                href={localePath(locale, "/products")}
+                className="btn-gold focus-ring mt-8"
+              >
+                {dict.home.heroCta}
+                <IconArrow />
+              </Link>
+            </div>
+          </div>
+          <div className="home-reveal-delay relative min-h-[320px] md:min-h-[520px]">
+            <PlaceholderFrame
+              label={dict.common.placeholderImage}
+              note={dict.home.heroPlaceholderNote}
+              aspect="hero"
+              tone="warm"
+              className="h-full min-h-[320px] md:min-h-[520px]"
+            />
           </div>
         </div>
       </section>
 
       {/* Value props */}
-      <section className="border-b border-border bg-ivory">
-        <div className="mx-auto grid max-w-6xl divide-y divide-border/80 md:grid-cols-5 md:divide-x md:divide-y-0">
+      <section className="border-b border-border bg-parchment/55">
+        <div className="mx-auto grid max-w-6xl divide-y divide-border/70 md:grid-cols-5 md:divide-x md:divide-y-0">
           {dict.home.values.map((item, index) => {
             const Icon = valueIcons[index] ?? IconGem;
             return (
               <div
                 key={item.title}
-                className="flex flex-col items-center gap-3 px-4 py-8 text-center"
+                className="home-reveal flex flex-col items-center gap-2.5 px-3 py-8 text-center"
+                style={{ animationDelay: `${0.05 * index}s` }}
               >
                 <span className="text-antique-gold">
                   <Icon />
                 </span>
-                <h2 className="font-serif text-lg text-espresso">{item.title}</h2>
-                <p className="text-xs leading-relaxed text-muted">{item.body}</p>
+                <h2 className="font-serif text-base text-espresso md:text-lg">
+                  {item.title}
+                </h2>
+                <p className="max-w-[14rem] text-[0.7rem] leading-relaxed text-muted md:text-xs">
+                  {item.body}
+                </p>
               </div>
             );
           })}
@@ -137,11 +151,11 @@ export default async function HomePage({ params }: HomePageProps) {
                   label={dict.common.placeholderImage}
                   aspect="square"
                   tone="warm"
-                  className="rounded-sm"
+                  className="transition duration-300 group-hover:brightness-[0.97]"
                 />
-                <span className="mt-3 flex items-center gap-2 font-serif text-xl text-espresso group-hover:text-walnut">
+                <span className="mt-3 flex items-center gap-2 font-serif text-xl text-espresso transition group-hover:text-walnut">
                   {t(locale, occasion.name)}
-                  <span className="text-antique-gold transition group-hover:translate-x-0.5">
+                  <span className="text-antique-gold transition duration-300 group-hover:translate-x-0.5">
                     <IconArrow />
                   </span>
                 </span>
@@ -151,7 +165,7 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
 
-      {/* Story */}
+      {/* Story triptych */}
       <section className="border-y border-border bg-surface">
         <div className="mx-auto grid max-w-6xl gap-0 md:grid-cols-3">
           <PlaceholderFrame
@@ -160,7 +174,7 @@ export default async function HomePage({ params }: HomePageProps) {
             aspect="story"
             tone="wood"
           />
-          <div className="flex flex-col justify-center bg-ivory px-8 py-12 md:px-10">
+          <div className="flex flex-col justify-center bg-parchment/40 px-8 py-12 md:px-10">
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-antique-gold">
               {dict.home.storyEyebrow}
             </p>
@@ -208,7 +222,7 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       {/* Process */}
-      <section className="border-t border-border bg-ivory/70">
+      <section className="border-t border-border bg-ivory">
         <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-16">
           <h2 className="font-serif text-3xl text-espresso md:text-4xl">
             {dict.home.processTitle}
