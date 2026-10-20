@@ -38,13 +38,13 @@ export const en: Dictionary = {
     comingSoon: "Soon",
   },
   home: {
-    heroEyebrow: "HANDMADE RELIEF DIPTYCHS",
+    heroEyebrow: "HANDMADE RELIEF ICONS",
     heroTitle: "Faith, tradition, and personal story.",
     heroLead:
-      "Unique gifts — open hinged relief panels with a personalized message, made with care for the most special people and moments.",
+      "Unique gifts, created with attention to every detail and a personalized message, for the most special people and moments.",
     heroCta: "Browse the collection",
-    heroPlaceholderNote:
-      "Slot for a real photo of an open relief diptych (not an ordinary book). Phase 1 — marked container.",
+    heroImageAlt:
+      "Handmade relief diptych — open hinged panels with relief and a personalized insert.",
     values: [
       {
         title: "Handmade",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -56,45 +57,44 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      {/* Hero — warm split composition matching cream mockups */}
-      <section className="relative overflow-hidden border-b border-border/60 bg-ivory">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          aria-hidden="true"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 80% 60% at 15% 40%, rgba(232,217,195,0.9), transparent 55%), radial-gradient(ellipse 50% 70% at 90% 20%, rgba(177,138,85,0.12), transparent 50%)",
-          }}
-        />
-        <div className="relative mx-auto grid max-w-6xl items-stretch md:grid-cols-2">
-          <div className="flex flex-col justify-center px-4 py-14 md:px-6 md:py-20 lg:pr-10">
-            <div className="home-reveal max-w-lg">
-              <p className="text-[0.68rem] font-medium uppercase tracking-[0.24em] text-antique-gold">
-                {dict.home.heroEyebrow}
-              </p>
-              <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] text-espresso md:text-5xl lg:text-[3.35rem]">
-                {dict.home.heroTitle}
-              </h1>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted md:text-[0.95rem]">
-                {dict.home.heroLead}
-              </p>
-              <Link
-                href={localePath(locale, "/products")}
-                className="btn-gold focus-ring mt-8"
-              >
-                {dict.home.heroCta}
-                <IconArrow />
-              </Link>
-            </div>
-          </div>
-          <div className="home-reveal-delay relative min-h-[320px] md:min-h-[520px]">
-            <PlaceholderFrame
-              label={dict.common.placeholderImage}
-              note={dict.home.heroPlaceholderNote}
-              aspect="hero"
-              tone="warm"
-              className="h-full min-h-[320px] md:min-h-[520px]"
+      {/* Hero — full-bleed banner photo with left copy overlay */}
+      <section className="relative overflow-hidden border-b border-border/60 bg-parchment">
+        <div className="absolute inset-0">
+          <Image
+            src="/hero/banner-photo.png"
+            alt={dict.home.heroImageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[72%_center] sm:object-[68%_center] md:object-center"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#f7f2ea]/88 via-[#f7f2ea]/45 to-transparent md:from-[#f7f2ea]/72 md:via-[#f7f2ea]/28 md:to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="relative mx-auto flex min-h-[380px] max-w-6xl items-center px-4 py-14 md:min-h-[480px] md:px-6 md:py-20 lg:min-h-[520px]">
+          <div className="home-reveal max-w-[22rem] md:max-w-md lg:max-w-lg">
+            <p className="text-[0.68rem] font-medium uppercase tracking-[0.24em] text-antique-gold">
+              {dict.home.heroEyebrow}
+            </p>
+            <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] text-espresso md:text-5xl lg:text-[3.25rem]">
+              {dict.home.heroTitle}
+            </h1>
+            <span
+              className="mt-5 block h-px w-14 bg-antique-gold/80"
+              aria-hidden="true"
             />
+            <p className="mt-5 max-w-md font-serif text-sm leading-relaxed text-espresso/85 md:text-[1.05rem]">
+              {dict.home.heroLead}
+            </p>
+            <Link
+              href={localePath(locale, "/products")}
+              className="btn-hero focus-ring mt-8"
+            >
+              {dict.home.heroCta}
+              <IconArrow />
+            </Link>
           </div>
         </div>
       </section>

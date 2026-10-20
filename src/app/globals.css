@@ -93,6 +93,26 @@ body {
   background: var(--espresso);
 }
 
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--walnut);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.45rem;
+  transition: background 0.15s ease;
+}
+
+.btn-hero:hover {
+  background: var(--espresso);
+}
+
 .step-badge {
   display: inline-flex;
   height: 1.5rem;
