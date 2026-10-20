@@ -26,7 +26,7 @@
   --color-surface: var(--surface);
   --font-sans: var(--font-manrope);
   --font-serif: var(--font-cormorant);
-  --font-display: var(--font-source-serif);
+  --font-display: var(--font-literata);
 }
 
 html {
@@ -49,38 +49,47 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
-    Palatino, serif;
+  font-family: var(--font-literata), Georgia, "Times New Roman", serif;
 }
 
 .hero-title {
-  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
-    Palatino, serif;
+  font-family: var(--font-literata), Georgia, "Times New Roman", serif;
   font-weight: 600;
-  font-size: clamp(2.35rem, 4.6vw, 3.75rem);
-  line-height: 1.14;
-  letter-spacing: -0.022em;
+  font-size: clamp(2.1rem, 3.6vw, 3.15rem);
+  line-height: 1.22;
+  letter-spacing: -0.012em;
   color: var(--espresso);
-  text-wrap: balance;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 .hero-lead {
-  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
-    Palatino, serif;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-weight: 400;
-  font-size: clamp(1.02rem, 1.4vw, 1.175rem);
-  line-height: 1.7;
-  letter-spacing: 0.012em;
-  color: color-mix(in srgb, var(--espresso) 78%, transparent);
+  font-size: clamp(0.92rem, 1.15vw, 1rem);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--espresso) 80%, transparent);
 }
 
 .hero-eyebrow {
   font-family: var(--font-manrope), "Segoe UI", sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--antique-gold);
+}
+
+/* Soft left scrim — fades out before the diptych (~40% of photo). */
+.hero-scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 242, 234, 0.88) 0%,
+    rgba(247, 242, 234, 0.62) 22%,
+    rgba(247, 242, 234, 0.28) 34%,
+    rgba(247, 242, 234, 0.06) 40%,
+    transparent 46%
+  );
 }
 
 .focus-ring:focus-visible {

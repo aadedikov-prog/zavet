@@ -57,21 +57,27 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      {/* Hero — split: copy left (clear of product), photo right */}
+      {/* Hero — full-bleed photo; copy only in left bright zone (desktop) */}
       <section className="overflow-hidden border-b border-border/60 bg-ivory">
-        <div className="mx-auto grid max-w-6xl items-stretch md:grid-cols-[minmax(0,0.88fr)_minmax(0,1.22fr)]">
-          <div className="relative flex flex-col justify-center px-5 py-14 sm:px-8 md:px-10 md:py-16 md:pr-12 lg:px-14 lg:py-20 lg:pr-16">
+        {/* Desktop / tablet: one continuous banner */}
+        <div className="relative hidden min-h-[480px] md:block lg:min-h-[540px]">
+          <Image
+            src="/hero/banner-photo.png"
+            alt={dict.home.heroImageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[50%_46%]"
+          />
+          <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="relative flex min-h-[480px] items-center lg:min-h-[540px]">
             <div
-              className="pointer-events-none absolute inset-0 opacity-80"
-              aria-hidden="true"
-              style={{
-                backgroundImage:
-                  "radial-gradient(ellipse 100% 90% at 10% 45%, rgba(232,217,195,0.75), transparent 62%)",
-              }}
-            />
-            <div className="home-reveal relative max-w-[21.5rem] md:max-w-[23rem] lg:max-w-[25rem]">
+              className="home-reveal w-full pl-[clamp(1.5rem,3vw,3rem)] pr-6"
+              /* Keep copy right-edge ≤ ~32vw so ≥48–80px gap before product (~40% of photo). */
+              style={{ maxWidth: "min(21rem, 32vw)" }}
+            >
               <p className="hero-eyebrow">{dict.home.heroEyebrow}</p>
-              <h1 className="hero-title mt-5">
+              <h1 className="hero-title mt-4">
                 {dict.home.heroTitle.split("\n").map((line, index, lines) => (
                   <span key={line}>
                     {line}
@@ -80,27 +86,54 @@ export default async function HomePage({ params }: HomePageProps) {
                 ))}
               </h1>
               <span
-                className="mt-6 block h-px w-16 bg-antique-gold/85"
+                className="mt-5 block h-px w-14 bg-antique-gold/90"
                 aria-hidden="true"
               />
-              <p className="hero-lead mt-6 max-w-[28rem]">{dict.home.heroLead}</p>
+              <p className="hero-lead mt-5">{dict.home.heroLead}</p>
               <Link
                 href={localePath(locale, "/products")}
-                className="btn-hero focus-ring mt-9"
+                className="btn-hero focus-ring mt-8"
               >
                 {dict.home.heroCta}
                 <IconArrow />
               </Link>
             </div>
           </div>
-          <div className="relative min-h-[260px] sm:min-h-[320px] md:min-h-[480px] lg:min-h-[540px]">
+        </div>
+
+        {/* Mobile: text above, full-width image below — no overlay */}
+        <div className="md:hidden">
+          <div className="px-[clamp(1.5rem,5vw,2rem)] py-12">
+            <p className="hero-eyebrow">{dict.home.heroEyebrow}</p>
+            <h1 className="hero-title mt-4">
+              {dict.home.heroTitle.split("\n").map((line, index, lines) => (
+                <span key={line}>
+                  {line}
+                  {index < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
+            </h1>
+            <span
+              className="mt-5 block h-px w-14 bg-antique-gold/90"
+              aria-hidden="true"
+            />
+            <p className="hero-lead mt-5">{dict.home.heroLead}</p>
+            <Link
+              href={localePath(locale, "/products")}
+              className="btn-hero focus-ring mt-8"
+            >
+              {dict.home.heroCta}
+              <IconArrow />
+            </Link>
+          </div>
+          <div className="relative aspect-[16/10] w-full">
             <Image
               src="/hero/banner-photo.png"
               alt={dict.home.heroImageAlt}
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 58vw"
-              className="object-cover object-[62%_48%] md:object-[58%_45%]"
+              sizes="100vw"
+              className="object-cover object-[55%_45%]"
             />
           </div>
         </div>
