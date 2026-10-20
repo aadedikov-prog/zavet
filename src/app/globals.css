@@ -26,6 +26,7 @@
   --color-surface: var(--surface);
   --font-sans: var(--font-manrope);
   --font-serif: var(--font-cormorant);
+  --font-display: var(--font-source-serif);
 }
 
 html {
@@ -45,6 +46,41 @@ body {
 
 .font-serif {
   font-family: var(--font-cormorant), "Times New Roman", serif;
+}
+
+.font-display {
+  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
+    Palatino, serif;
+}
+
+.hero-title {
+  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
+    Palatino, serif;
+  font-weight: 600;
+  font-size: clamp(2.35rem, 4.6vw, 3.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  color: var(--espresso);
+  text-wrap: balance;
+}
+
+.hero-lead {
+  font-family: var(--font-source-serif), "Iowan Old Style", "Palatino Linotype",
+    Palatino, serif;
+  font-weight: 400;
+  font-size: clamp(1.02rem, 1.4vw, 1.175rem);
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+  color: color-mix(in srgb, var(--espresso) 78%, transparent);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
 }
 
 .focus-ring:focus-visible {

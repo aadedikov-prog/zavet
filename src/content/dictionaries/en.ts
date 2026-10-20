@@ -39,7 +39,7 @@ export const en: Dictionary = {
   },
   home: {
     heroEyebrow: "HANDMADE RELIEF ICONS",
-    heroTitle: "Faith, tradition, and personal story.",
+    heroTitle: "Faith, tradition,\nand personal story.",
     heroLead:
       "Unique gifts, created with attention to every detail and a personalized message, for the most special people and moments.",
     heroCta: "Browse the collection",

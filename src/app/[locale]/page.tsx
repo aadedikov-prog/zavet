@@ -57,44 +57,51 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      {/* Hero — full-bleed banner photo with left copy overlay */}
-      <section className="relative overflow-hidden border-b border-border/60 bg-parchment">
-        <div className="absolute inset-0">
-          <Image
-            src="/hero/banner-photo.png"
-            alt={dict.home.heroImageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[72%_center] sm:object-[68%_center] md:object-center"
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-[#f7f2ea]/88 via-[#f7f2ea]/45 to-transparent md:from-[#f7f2ea]/72 md:via-[#f7f2ea]/28 md:to-transparent"
-            aria-hidden="true"
-          />
-        </div>
-        <div className="relative mx-auto flex min-h-[380px] max-w-6xl items-center px-4 py-14 md:min-h-[480px] md:px-6 md:py-20 lg:min-h-[520px]">
-          <div className="home-reveal max-w-[22rem] md:max-w-md lg:max-w-lg">
-            <p className="text-[0.68rem] font-medium uppercase tracking-[0.24em] text-antique-gold">
-              {dict.home.heroEyebrow}
-            </p>
-            <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] text-espresso md:text-5xl lg:text-[3.25rem]">
-              {dict.home.heroTitle}
-            </h1>
-            <span
-              className="mt-5 block h-px w-14 bg-antique-gold/80"
+      {/* Hero — split: copy left (clear of product), photo right */}
+      <section className="overflow-hidden border-b border-border/60 bg-ivory">
+        <div className="mx-auto grid max-w-6xl items-stretch md:grid-cols-[minmax(0,0.88fr)_minmax(0,1.22fr)]">
+          <div className="relative flex flex-col justify-center px-5 py-14 sm:px-8 md:px-10 md:py-16 md:pr-12 lg:px-14 lg:py-20 lg:pr-16">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-80"
               aria-hidden="true"
+              style={{
+                backgroundImage:
+                  "radial-gradient(ellipse 100% 90% at 10% 45%, rgba(232,217,195,0.75), transparent 62%)",
+              }}
             />
-            <p className="mt-5 max-w-md font-serif text-sm leading-relaxed text-espresso/85 md:text-[1.05rem]">
-              {dict.home.heroLead}
-            </p>
-            <Link
-              href={localePath(locale, "/products")}
-              className="btn-hero focus-ring mt-8"
-            >
-              {dict.home.heroCta}
-              <IconArrow />
-            </Link>
+            <div className="home-reveal relative max-w-[21.5rem] md:max-w-[23rem] lg:max-w-[25rem]">
+              <p className="hero-eyebrow">{dict.home.heroEyebrow}</p>
+              <h1 className="hero-title mt-5">
+                {dict.home.heroTitle.split("\n").map((line, index, lines) => (
+                  <span key={line}>
+                    {line}
+                    {index < lines.length - 1 ? <br /> : null}
+                  </span>
+                ))}
+              </h1>
+              <span
+                className="mt-6 block h-px w-16 bg-antique-gold/85"
+                aria-hidden="true"
+              />
+              <p className="hero-lead mt-6 max-w-[28rem]">{dict.home.heroLead}</p>
+              <Link
+                href={localePath(locale, "/products")}
+                className="btn-hero focus-ring mt-9"
+              >
+                {dict.home.heroCta}
+                <IconArrow />
+              </Link>
+            </div>
+          </div>
+          <div className="relative min-h-[260px] sm:min-h-[320px] md:min-h-[480px] lg:min-h-[540px]">
+            <Image
+              src="/hero/banner-photo.png"
+              alt={dict.home.heroImageAlt}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 58vw"
+              className="object-cover object-[62%_48%] md:object-[58%_45%]"
+            />
           </div>
         </div>
       </section>

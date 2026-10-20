@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -10,6 +10,14 @@ const manrope = Manrope({
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+/** Warm display serif with solid Bulgarian Cyrillic — used for hero headline. */
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -32,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="bg"
-      className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${manrope.variable} ${cormorant.variable} ${sourceSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans text-foreground">
         {children}
