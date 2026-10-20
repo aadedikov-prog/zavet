@@ -60,43 +60,54 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero — full-bleed photo; copy only in left bright zone (desktop) */}
       <section className="overflow-hidden border-b border-border/60 bg-ivory">
         {/* Desktop / tablet: one continuous banner */}
-        <div className="relative hidden min-h-[480px] md:block lg:min-h-[540px]">
+        <div className="relative hidden min-h-[480px] overflow-hidden md:block lg:min-h-[540px]">
+          {/*
+            Scale from the left so the bright empty zone widens and the diptych
+            shifts into the right half (object-position alone can't shift X when
+            the banner aspect matches the photo width).
+          */}
           <Image
             src="/hero/banner-photo.png"
             alt={dict.home.heroImageAlt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[50%_46%]"
+            className="object-cover object-[72%_50%] origin-left scale-[1.28]"
           />
-          <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="relative flex min-h-[480px] items-center lg:min-h-[540px]">
             <div
-              className="home-reveal w-full pl-[clamp(1.5rem,3vw,3rem)] pr-6"
-              /* Keep copy right-edge ≤ ~32vw so ≥48–80px gap before product (~40% of photo). */
-              style={{ maxWidth: "min(21rem, 32vw)" }}
+              className="home-reveal relative w-full pl-[clamp(1.5rem,3vw,2.75rem)]"
+              /* Narrow copy: keep ≥120px clear gap to gold frame / horse at 1280px. */
+              style={{ maxWidth: "min(16.5rem, 26vw)" }}
             >
-              <p className="hero-eyebrow">{dict.home.heroEyebrow}</p>
-              <h1 className="hero-title mt-4">
-                {dict.home.heroTitle.split("\n").map((line, index, lines) => (
-                  <span key={line}>
-                    {line}
-                    {index < lines.length - 1 ? <br /> : null}
-                  </span>
-                ))}
-              </h1>
-              <span
-                className="mt-5 block h-px w-14 bg-antique-gold/90"
+              {/* Scrim only behind the text box — not across the product */}
+              <div
+                className="hero-scrim pointer-events-none absolute -inset-y-8 -left-4 right-0"
                 aria-hidden="true"
               />
-              <p className="hero-lead mt-5">{dict.home.heroLead}</p>
-              <Link
-                href={localePath(locale, "/products")}
-                className="btn-hero focus-ring mt-8"
-              >
-                {dict.home.heroCta}
-                <IconArrow />
-              </Link>
+              <div className="relative pr-2">
+                <p className="hero-eyebrow">{dict.home.heroEyebrow}</p>
+                <h1 className="hero-title mt-4">
+                  {dict.home.heroTitle.split("\n").map((line, index, lines) => (
+                    <span key={line}>
+                      {line}
+                      {index < lines.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
+                </h1>
+                <span
+                  className="mt-5 block h-px w-14 bg-antique-gold/90"
+                  aria-hidden="true"
+                />
+                <p className="hero-lead mt-5">{dict.home.heroLead}</p>
+                <Link
+                  href={localePath(locale, "/products")}
+                  className="btn-hero focus-ring mt-8"
+                >
+                  {dict.home.heroCta}
+                  <IconArrow />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

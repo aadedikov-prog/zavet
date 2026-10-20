@@ -55,7 +55,7 @@ body {
 .hero-title {
   font-family: var(--font-literata), Georgia, "Times New Roman", serif;
   font-weight: 600;
-  font-size: clamp(2.1rem, 3.6vw, 3.15rem);
+  font-size: clamp(1.85rem, 3.1vw, 2.75rem);
   line-height: 1.22;
   letter-spacing: -0.012em;
   color: var(--espresso);
@@ -80,15 +80,14 @@ body {
   color: var(--antique-gold);
 }
 
-/* Soft left scrim — fades out before the diptych (~40% of photo). */
+/* Soft scrim sized to the text box only (not full-bleed over the product). */
 .hero-scrim {
-  background: linear-gradient(
-    90deg,
-    rgba(247, 242, 234, 0.88) 0%,
-    rgba(247, 242, 234, 0.62) 22%,
-    rgba(247, 242, 234, 0.28) 34%,
-    rgba(247, 242, 234, 0.06) 40%,
-    transparent 46%
+  background: radial-gradient(
+    ellipse 95% 90% at 20% 45%,
+    rgba(247, 242, 234, 0.94) 0%,
+    rgba(247, 242, 234, 0.78) 45%,
+    rgba(247, 242, 234, 0.35) 72%,
+    transparent 100%
   );
 }
 
